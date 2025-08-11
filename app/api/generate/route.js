@@ -6,7 +6,6 @@ connectDB();
 export async function POST(request) {
     try {
         const { url, shortLink } = await request.json();
-        console.log(url, shortLink);
     
         if (url && shortLink) {
             //check if short link already exists
@@ -24,7 +23,6 @@ export async function POST(request) {
             return NextResponse.json({ message: "Please enter both URL and short link", success: false }, { status: 400 });
         }
     } catch (error) {
-        console.log(error);
         return NextResponse.json({ message: "Something went wrong", success: false }, { status: 501 });
     }
 }

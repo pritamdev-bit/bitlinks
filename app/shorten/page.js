@@ -1,5 +1,6 @@
 "use client"
 import { set } from 'mongoose'
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 const Shortenpage = () => {
@@ -27,7 +28,6 @@ const Shortenpage = () => {
                 body: JSON.stringify({ url, shortLink }),
             })
             const response = await res.json()
-            console.log(response)
             if (response.success) {
                 setShortenedUrl(() => ({ url: response.data.url, shortLink: response.data.shortLink }))
             }
@@ -61,15 +61,26 @@ const Shortenpage = () => {
                     className='bg-purple-500 hover:bg-purple-600 ring-black hover:ring-2 my-4 text-white px-4 py-2 rounded-lg transition-all duration-100 cursor-pointer'>Generate</button>
             </div>
             {shortenedUrl.shortLink && (
-                <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-4 text-wrap break-words'>
                     <h2 className='text-2xl font-semibold'>Your Short Link</h2>
-                    <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col'>
                         <span className='text-lg font-semibold'>URL:</span>
-                        <span>{shortenedUrl.url}</span>
+                        <span className='text-sm text-gray-400'>{shortenedUrl.url}</span>
                     </div>
-                    <div className='flex flex-col gap-2'>
-                        <span className='text-lg font-semibold'>Short Link:</span>
-                        <span>{`https://bitlinks.vercel.app/${shortenedUrl.shortLink}`}</span>
+                    <div className='flex flex-col'>
+                        <div className='text-lg font-semibold'>Short Link:</div>
+                        <div className='flex gap-1 items-center'>
+                            <Link href={`/${shortenedUrl.shortLink}`} target='_blank' className='hover:underline text-purple-700'>
+                                <span>{`https://bitlinks-open.vercel.app/${shortenedUrl.shortLink}`}</span>
+                            </Link>
+                            <span onClick={(e) => navigator.clipboard.writeText(`https://bitlinks-open.vercel.app/${shortenedUrl.shortLink}`)}>
+                                <video
+                                src="/copy.mp4" 
+                                onMouseOver={(e) => e.currentTarget.play()} 
+                                className='mix-blend-darken relative cursor-pointer' 
+                                width={35}></video>
+                            </span>
+                        </div>
                     </div>
                 </div>
             )}
