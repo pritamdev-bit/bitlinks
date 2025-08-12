@@ -39,7 +39,7 @@ const Shortenpage = () => {
         }
     }
     return (
-        <div className='flex flex-col gap-4 mx-auto max-w-xl my-10 bg-purple-100 p-6 rounded-md'>
+        <div className='flex flex-col gap-4 sm:mx-auto max-w-xl my-10 bg-purple-200 p-6 rounded-md mx-2'>
             <h1 className='text-2xl font-semibold'>Generate short links of your URLs</h1>
             <div className='flex flex-col gap-2'>
                 <input

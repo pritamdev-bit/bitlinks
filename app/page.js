@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="bg-purple-100">
-      <section className="grid grid-cols-2 h-[50vh]">
-        <div className="flex flex-col items-center justify-center">
+      <section className="grid lg:grid-cols-2 grid-cols-1 h-[80vh]">
+        <div className="flex flex-col items-center justify-center text-center p-2">
           <h1 className="pointer-events-none whitespace-pre-wrap bg-clip-text text-center text-8xl font-semibold leading-none">
             Bitlinks
           </h1>
@@ -18,7 +18,7 @@ export default function Home() {
             <Link href="/shorten">
             <button className='bg-purple-200 outline outline-purple-900 hover:outline-2 text-purple-700 px-4 py-1 rounded-lg transition-all duration-100 hover:scale-105 cursor-pointer'>Try Now</button>
             </Link>
-            <Link href="/github">
+            <Link href="https://github.com/pritamdev-bit/bitlinks" target='_blank'>
             <button className='bg-purple-200 outline outline-purple-900 hover:outline-2 text-purple-700 px-4 py-1 rounded-lg transition-all duration-100 hover:scale-105 cursor-pointer'>GitHub</button>
             </Link>
           </div>
